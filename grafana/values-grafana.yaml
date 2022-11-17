@@ -1,0 +1,17 @@
+persistence:
+  type: pvc
+  enabled: true
+  
+# Administrator credentials when not using an existing secret (see below)
+adminUser: admin
+adminPassword: strongpassword
+
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+    - name: Prometheus
+      type: prometheus
+      url: http://prometheus-server
+      access: proxy
+      isDefault: true

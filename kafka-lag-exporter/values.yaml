@@ -1,0 +1,3 @@
+clusters:
+  - name: "<some-name>"
+    bootstrapBrokers: "http://k8kafka-cp-kafka-headless:9092"
