@@ -10,5 +10,5 @@ jobs:
     - uses: konradpabjan/actions-add-new-issue-to-column@v1.1
       with:
         action-token: "${{ secrets.GH_TOKEN }}"
-        project-url: "https://github.com/users/MichaelKora/projects/3"
-        column-name: "Todos"
+        project-url: "https://github.com/users/MichaelKora/projects/4"
+        column-name: "Todo"
