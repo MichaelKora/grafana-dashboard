@@ -1,17 +1,23 @@
-name: Add issue to project
 on:
   issues:
     types:
-      - opened
+      - edited
 
 jobs:
-  add-to-project:
-    name: Add issue to project
+  create-update-project:
+    name: Create/update project issue
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/add-to-project@main
+      - uses: actions/checkout@v3
+      - uses: actions/add-to-project@v0.3.0 # This adds the issue to the project
         with:
           project-url: https://github.com/users/MichaelKora/projects/4
           github-token: ${{ secrets.MY_TOKEN }}
-          labeled: bug, needs-triage
-          label-operator: OR
+        id: add-project
+      - uses: titoportas/update-project-fields@v0.1.0
+        with:
+          project-url: https://github.com/users/titoportas/projects/2
+          github-token: ${{ secrets.GHPROJECT_SECRET }}
+          item-id: ${{ steps.add-project.outputs.itemId }} # Use the item-id output of the previous step
+          field-keys: Status
+          field-values: Todo
