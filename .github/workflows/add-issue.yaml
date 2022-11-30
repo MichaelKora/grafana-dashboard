@@ -9,6 +9,6 @@ jobs:
     steps:
     - uses: konradpabjan/actions-add-new-issue-to-column@v1.1
       with:
-        action-token: "${{ secrets.GITHUB_TOKEN }}"
+        action-token: "${{ secrets.GH_TOKEN }}"
         project-url: "https://github.com/users/MichaelKora/projects/1/"
         column-name: "Todos"
