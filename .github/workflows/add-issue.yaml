@@ -1,14 +1,17 @@
-name: "KPOps Project"
-
+name: Add issue to project
 on:
   issues:
-    types: [opened]
+    types:
+      - opened
+
 jobs:
-  Add_New_Issue_To_Project:
+  add-to-project:
+    name: Add issue to project
     runs-on: ubuntu-latest
     steps:
-    - uses: konradpabjan/actions-add-new-issue-to-column@v1.1
-      with:
-        action-token: "${{ secrets.MY_TOKEN }}"
-        project-url: "https://github.com/users/MichaelKora/projects/4"
-        column-name: "Todo"
+      - uses: actions/add-to-project@main
+        with:
+          project-url: https://github.com/users/MichaelKora/projects/4
+          github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
+          labeled: bug, needs-triage
+          label-operator: OR
