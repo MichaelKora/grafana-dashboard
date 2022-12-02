@@ -1,5 +1,6 @@
 name: matrix test
 
+
 on:
   workflow_dispatch:
     inputs:
@@ -10,7 +11,6 @@ on:
 jobs:
   first-job:
 #    if: ${{ inputs.start-run == 'true' }}
-    needs: helm-lint
     runs-on: ubuntu-22.04
     strategy:
       matrix:
