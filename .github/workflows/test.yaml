@@ -10,8 +10,8 @@ on:
         type: string
 jobs:
   first-job:
-#    if: ${{ inputs.start-run == 'true' }}
     runs-on: ubuntu-22.04
+    if: ${{ inputs.start-run == 'true' }}
     strategy:
       matrix:
         stage: [producer-app, producer-app-cleanup-job, rclone-copy, streams-app, streams-app-cleanup-job]
@@ -20,9 +20,15 @@ jobs:
 
     steps:
       - name: echo1
-        run: echo "Hello world"
+        run: echo ${{ env.charts-subdir }}
         shell: bash
+  second-job:
+    if: ${{ inputs.start-run == 'false' }}
+    runs-on: ubuntu-22.04
+    env:
+      charts-subdir: "root-dir"
 
-      - name: echo 2
-        run: echo "Hello world"
+    steps:
+      - name: echo1
+        run: echo ${{ env.charts-subdir }}
         shell: bash
