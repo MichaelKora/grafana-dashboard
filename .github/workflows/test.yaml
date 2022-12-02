@@ -1,7 +1,7 @@
-name: Reusable workflow for packaging and publishing Helm charts on GitHub pages
+name: matrix test
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       start-run:
         description: "Describes if thats the first time the workflow will be run. because if that is the first time then there are multiple subdir with one index.yaml each"
